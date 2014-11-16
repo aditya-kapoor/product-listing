@@ -1,0 +1,34 @@
+<%= form_for(@product, html: { class: 'product-form form-horizontal', role: 'form'}) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <ul>
+        <% @product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, 'Price in (cents)', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :price, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="actions form-group">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
